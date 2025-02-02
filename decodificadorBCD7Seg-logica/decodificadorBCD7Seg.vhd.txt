@@ -1,0 +1,32 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+
+ENTITY decodificadorBCD7Seg IS
+    PORT(
+        bcd : IN  std_logic_vector(3 DOWNTO 0);
+        a, b, c, d, e, f, g : OUT std_logic
+    );
+END decodificadorBCD7Seg;
+
+ARCHITECTURE arch OF decodificadorBCD7Seg IS
+BEGIN
+    PROCESS (bcd)
+        VARIABLE B0, B1, B2, B3 : std_logic;
+    BEGIN
+        B0 := bcd(3);
+        B1 := bcd(2);
+        B2 := bcd(1);
+        B3 := bcd(0);
+    
+		a <= B0 OR B2 OR (B1 AND B3) OR (NOT B1 AND NOT B3);
+		b <= (NOT B1) OR (NOT B2 AND NOT B3) OR (B2 AND B3);
+		c <= B1 OR NOT B2 OR B3;
+		d <= (NOT B1 AND NOT B3) OR (B2 AND NOT B3) OR (B1 AND NOT B2 AND B3) OR (NOT B1 AND B2) OR B0;
+		e <= (NOT B1 AND NOT B3) OR (B2 AND NOT B3);
+		f <= B0 OR (NOT B2 AND NOT B3) OR (B1 AND NOT B2) OR (B1 AND NOT B3);
+		g <= B0 OR (B1 AND NOT B2) OR ( NOT B1 AND B2) OR (B2 AND NOT B3);
+		 
+		END PROCESS;
+
+END ARCHITECTURE;

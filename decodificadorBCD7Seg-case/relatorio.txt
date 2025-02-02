@@ -1,0 +1,12 @@
+--------------- dados do fpga ----------------
+familia: Cyclone III
+dispositivo: EP3C5F256C6
+-------- dados de utilizacao da placa --------
+total combinational functions: 7 / 5,136 ( < 1 % )
+dedicates logic registers: 0 / 5,136 ( 0 % )
+total pins: 11 / 183 ( 6 % )
+-------------- dados de atraso ---------------
+input port: bcd[2]
+output port: abcdefg[5]
+atraso (ns): 4.506
+RR, RF, FR, FF: FF
